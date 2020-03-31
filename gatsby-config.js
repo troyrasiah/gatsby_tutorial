@@ -12,6 +12,19 @@ module.exports = {
         path: `${__dirname}/src/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/pages`,
+      },
+    },
+    {
+      resolve: "gatsby-plugin-page-creator",
+      options: {
+        path: `${__dirname}/src/pages`,
+      },
+    },
     `gatsby-transformer-remark`,
     `gatsby-plugin-sharp`,
     {
@@ -52,6 +65,15 @@ module.exports = {
     `gatsby-plugin-offline`,
     `formik`,
     `yup`,
-    `@emotion/styled`
+    `@emotion/styled`,
+    {
+      resolve: `gatsby-plugin-mdx`,
+      options: {
+        defaultLayouts: {
+          default: require.resolve(`./src/components/layout.js`),
+        }
+      }
+    }
+    
   ],
 }

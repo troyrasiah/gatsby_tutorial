@@ -1,8 +1,12 @@
 import React from "react"
 import { css } from "@emotion/core"
 import { useStaticQuery, Link, graphql } from "gatsby"
-
 import { rhythm } from "../utils/typography"
+import {MDXProvider} from '@mdx-js/react'
+import SignupForm from "./signup_form"
+
+const shortcodes = { SignupForm }
+
 export default ({ children }) => {
   const data = useStaticQuery(
     graphql`
@@ -43,7 +47,7 @@ export default ({ children }) => {
       >
         About
       </Link>
-      {children}
+      <MDXProvider components={shortcodes}>{children}</MDXProvider>
     </div>
   )
 }
