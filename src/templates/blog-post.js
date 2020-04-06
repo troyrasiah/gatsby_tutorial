@@ -6,15 +6,13 @@ import Img from "gatsby-image"
 
 export default ({ data }) => {
   const post = data.markdownRemark
-  let featuredImgFluid = post.frontmatter.featuredImage ? (
-    <Img fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />
-  ) : (
-    ''
-  )
+  let featuredImgFluid = post.frontmatter.featuredImage ?
+    (<Img fluid={post.frontmatter.featuredImage.childImageSharp.fluid} />) : ('')
+  let seo_title = post.frontmatter.searchengine_title ? (post.frontmatter.searchengine_title) : (post.frontmatter.title)
   
   return (
     <Layout>
-      <SEO title={post.frontmatter.title} description={post.excerpt} />
+      <SEO title={seo_title} description={post.excerpt} />
       <div>
         <h1>{post.frontmatter.title}</h1>
         {featuredImgFluid}
@@ -30,6 +28,7 @@ export const query = graphql`
       html
       frontmatter {
         title
+        searchengine_title
         featuredImage {
             childImageSharp {
               fluid(maxWidth: 800) {

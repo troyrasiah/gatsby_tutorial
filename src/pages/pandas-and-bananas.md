@@ -1,5 +1,6 @@
 ---
 title: "Pandas and Bananas"
+searchengine_title: "SEO Pandas and Bananas"
 featuredImage: ../images/cup.png
 date: "2017-08-21"
 ---

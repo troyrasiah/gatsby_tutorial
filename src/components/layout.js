@@ -4,6 +4,7 @@ import { useStaticQuery, Link, graphql } from "gatsby"
 import { rhythm } from "../utils/typography"
 import {MDXProvider} from '@mdx-js/react'
 import SignupForm from "./signup_form"
+import SEO from "../components/seo"
 
 const shortcodes = { SignupForm }
 
@@ -28,6 +29,7 @@ export default ({ children }) => {
         padding-top: ${rhythm(1.5)};
       `}
     >
+      <SEO title={data.site.siteMetadata.title} />
       <Link to={`/`}>
         <h3
           css={css`

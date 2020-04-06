@@ -1,8 +1,9 @@
 module.exports = {
   siteMetadata: {
-    title: `Pandas Eating Lots`,
+    title: `Troy's tutorial`,
     description: `A simple description about pandas eating lots...`,
     author: `gatsbyjs`,
+    siteUrl: `https://pedantic-perlman-4682c8.netlify.com/`,
   },
   plugins: [
     {
@@ -60,6 +61,7 @@ module.exports = {
         // see https://developers.google.com/web/fundamentals/web-app-manifest/#display
         display: `standalone`,
         icon: `src/images/icon.png`, // This path is relative to the root of the site.
+        crossOrigin: `use-credentials`, // `use-credentials` or `anonymous`
       },
     },
     `gatsby-plugin-offline`,
@@ -73,7 +75,8 @@ module.exports = {
           default: require.resolve(`./src/components/layout.js`),
         }
       }
-    }
+    },
+    `gatsby-plugin-advanced-sitemap`,
     
   ],
 }
