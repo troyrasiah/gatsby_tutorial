@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: `Troy's tutorial`,
@@ -77,6 +79,38 @@ module.exports = {
       }
     },
     `gatsby-plugin-advanced-sitemap`,
-    
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        // replace "UA-XXXXXXXXX-X" with your own Tracking ID
+        trackingId: "UA-163660498-1",
+      },
+    },
+    {
+      resolve: "gatsby-plugin-guess-js",
+      options: {
+        // Find the view id in the GA admin in a section labeled "views"
+        GAViewID: process.env.GUESS_VIEWID,
+        // Add a JWT to get data from GA
+        jwt: {
+          client_email: process.env.GUESS_EMAIL,
+          private_key: process.env.GUESS_PRIVATE_KEY.replace(/\\n/g, "\n"),
+        },
+        minimumThreshold: 0.03,
+        // The "period" for fetching analytic data.
+        period: {
+          startDate: new Date("2020-1-1"),
+          endDate: new Date(),
+        },
+      },
+    },
+    {
+      resolve:`gatsby-source-cloudinary`,
+      options:{
+        cloudName: process.env.CLOUDINARY_CLOUD_NAME,
+        apiKey: process.env.CLOUDINARY_API_KEY,
+        apiSecret: process.env.CLOUDINARY_API_SECRET,
+      }
+  }
   ],
 }

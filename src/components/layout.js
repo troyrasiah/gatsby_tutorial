@@ -49,6 +49,14 @@ export default ({ children }) => {
       >
         About
       </Link>
+      <Link
+        to={`/cloudinary/`}
+        css={css`
+          float: right;
+        `}
+      >
+        Image Gallery
+      </Link>
       <MDXProvider components={shortcodes}>{children}</MDXProvider>
     </div>
   )
